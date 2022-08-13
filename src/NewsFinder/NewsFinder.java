@@ -4,13 +4,10 @@ package NewsFinder;
 import NewsFinder.utils.PageDownloader;
 
 public class NewsFinder implements NewsScanner {
-    public NewsInfo findNews(){
+    public NewsInfo findNews() {
 
-//       Scanner sc = new Scanner(System.in);
-//        System.out.print("Ведите категорию: ");
-//        String newCategory = sc.next();
         NewsScanner newsScanner = new NewsFinder();
-       String newCategory =  newsScanner.printCategory();
+        String newCategory = newsScanner.printCategory();
         System.out.println("Идет скачивание...");
         String url = "https://inshortsapi.vercel.app/news?category=" + newCategory;
         PageDownloader downloader = new PageDownloader();
@@ -24,9 +21,9 @@ public class NewsFinder implements NewsScanner {
     }
 
 
-    private String getTagValue (String page, String tagName){
-        int begin =   page.indexOf('"' + tagName + '"') + 4 + tagName.length();
-        int end = page.indexOf('"'  , begin);
+    private String getTagValue(String page, String tagName) {
+        int begin = page.indexOf('"' + tagName + '"') + 4 + tagName.length();
+        int end = page.indexOf('"', begin);
         return page.substring(begin, end);
     }
 
